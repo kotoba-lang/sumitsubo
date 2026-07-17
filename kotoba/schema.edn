@@ -1,7 +1,7 @@
 ;; sumitsubo 墨壺 — kotoba EAVT schema
 ;; ADR-2606033600
 ;; Drawing / layer / entity / export / model-request, all kotoba Datoms (G2).
-;; The TS SDK (sdk/src/kotoba/datom.ts drawingToDatoms) and the py cells (agent._emit_datoms)
+;; The pinned TS SDK and the Clojure cells
 ;; both write into this :dwg.* namespace. Canonical state per ADR-2605262130/2605312345.
 
 [;; ───────────────────────────── :dwg/* — drawing ─────────────────────────────
@@ -58,7 +58,7 @@
  {:db/ident :dwg.entity/geom
   :db/valueType :db.type/string
   :db/cardinality :db.cardinality/one
-  :db/doc "compact coordinate encoding (see sdk/src/kotoba/datom.ts)"}
+  :db/doc "compact coordinate encoding (see the pinned Sumitsubo CAD SDK)"}
  {:db/ident :dwg.entity/closed
   :db/valueType :db.type/boolean
   :db/cardinality :db.cardinality/one

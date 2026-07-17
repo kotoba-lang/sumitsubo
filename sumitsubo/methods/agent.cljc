@@ -7,7 +7,7 @@
   falls to the deterministic heuristic planner and _emit_datoms just returns the datoms (omitted legs)."
   (:require [clojure.string :as str]))
 
-;; Shared ModelOp vocabulary (MUST stay in lockstep with sdk/src/geometry/types.ts)
+;; Shared ModelOp vocabulary (MUST stay in lockstep with the pinned Sumitsubo CAD SDK).
 (def ^:private OP-SCHEMA
   {"layer" #{"name"} "point" #{"x" "y"} "line" #{"x1" "y1" "x2" "y2"} "polyline" #{"points"}
    "rect" #{"x" "y" "w" "h"} "circle" #{"cx" "cy" "r"} "arc" #{"cx" "cy" "r" "start" "end"}

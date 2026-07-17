@@ -43,7 +43,8 @@
  ;; The TS cleanroom CAD-interop SDK module re-exported by kami-engine-sdk.
  :actor/sdk
  {:sdk/package "@etzhayyim/sumitsubo-cad"
-  :sdk/path    "sdk/"
+  :sdk/repository "https://github.com/etzhayyim/com-etzhayyim-sumitsubo-cad"
+  :sdk/revision "225cbf26faa1964e39366ecd69de5ba0ca7a6c7e"
   :sdk/reexport-from "kami-engine-sdk (export * from '@etzhayyim/sumitsubo-cad')"
   :sdk/formats ["dxf" "svg" "obj" "gltf" "ifc" "step" "dwg"]
   :sdk/adapters ["vectorworks" "autocad"]}
@@ -56,17 +57,14 @@
  :actor/kotoba
  {:kotoba/schema "kotoba/schema.edn"
   :kotoba/seed   "kotoba/seed.edn"
-  :kotoba/deploy "kotoba/deploy.sh"}
+  :kotoba/deploy "kotoba/deploy.edn"}
 
  ;; CycloneDX SBOM bound to the deployed wasm's kotoba program CID (G11).
  ;; Generated at deploy time by 70-tools/scripts/wasm-sbom/wasm_sbom_gen.py and
  ;; ingested into kotobase-kg-v1; deps join the same purl↔CVE VulnMatch surface
  ;; as the giemon hardware SBOMs (ADR-2605312330). See ADR-2606036000.
  :actor/sbom
- {:sbom/format    "CycloneDX-1.5"
-  :sbom/vocab     "00-contracts/schemas/wasm-sbom.kotoba.edn"
-  :sbom/generator "70-tools/scripts/wasm-sbom/wasm_sbom_gen.py"
-  :sbom/artifact  "py/agent.wasm.cdx.json"
-  :sbom/ingest    "py/agent.wasm.sbom.ingest.json"
-  :sbom/key       "kotoba program CID (KotobaCid::from_bytes(py/agent.wasm))"
-  :sbom/adr       "2606036000"}}
+ {:sbom/status :not-built
+  :sbom/reason :no-component-binary-in-repository
+  :sbom/required-before-deployment true
+  :sbom/adr "2606036000"}}

@@ -1,4 +1,4 @@
-;; 20-actors/sumitsubo/schema.edn — Datomic/Datascript compatible schema (auto-generated)
+;; schema.edn — Datomic/Datascript compatible schema
 ;; :db/ident attribute definitions. No Datomic-specific keys (:db.install/_attribute etc).
 ;; Do not hand-edit -- regenerating overwrites this file.
 ;;

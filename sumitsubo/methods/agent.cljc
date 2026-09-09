@@ -5,7 +5,7 @@
   ModelOp list, cleanroom G1), handle-export (resolve format + emit record, DWG-proprietary honesty
   G5). Pure-stdlib (json/re); the Murakumo llm (G3) + datalog host bindings are unused, so _llm_plan
   falls to the deterministic heuristic planner and _emit_datoms just returns the datoms (omitted legs)."
-  (:require [kotoba.lang.text :as str]))
+  (:require [clojure.string :as str]))
 
 ;; Shared ModelOp vocabulary (MUST stay in lockstep with the pinned Sumitsubo CAD SDK).
 (def ^:private OP-SCHEMA
@@ -27,7 +27,7 @@
 (defn- heuristic-plan
   "Deterministic planner: recognizes 'box 10x20x30', 'rect 100x50', 'circle r=5', 'extrude WxH by N'."
   [prompt]
-  (let [p (str/lower prompt)
+  (let [p (str/lower-case prompt)
         i #(Integer/parseInt %)
         ops (concat
              (for [[_ w d h] (re-seq #"box\s+(\d+)\s*[x×]\s*(\d+)\s*[x×]\s*(\d+)" p)]
@@ -97,7 +97,7 @@
                 (let [line (first lines)]
                   (if (empty? line)
                     (recur (rest lines) layer acc)
-                    (let [cmd (-> (str (first line)) str/upper (str/replace #"^[._]+" ""))
+                    (let [cmd (-> (str (first line)) str/upper-case (str/replace #"^[._]+" ""))
                           args (vec (rest line))
                           nf (fn [k] (double (nth args k)))]
                       (cond
@@ -135,7 +135,7 @@
   "Resolve target format + emit export record. Fidelity reported (full|subset|fallback); DWG never
   claimed native (G5)."
   [state]
-  (let [fmt (str/lower (str (get state "format" "dxf")))
+  (let [fmt (str/lower-case (str (get state "format" "dxf")))
         fidelity (get EXPORT-FIDELITY fmt "unsupported")
         record (cond-> {"drawingId" (get state "drawing_id" "drawing-1") "format" fmt
                         "fidelity" fidelity "native" (not= fmt "dwg")}

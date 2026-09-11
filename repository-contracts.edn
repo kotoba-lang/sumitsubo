@@ -9,6 +9,6 @@
  :actor-owned-contracts ["lex/drawing.edn" "lex/entity.edn"
                          "lex/export.edn" "lex/model-request.edn"]
  :external-wire-formats #{}
- :tests {:command ["bb" "run_tests.clj"]
+ :tests {:command ["bb" "run_tests.cljk"]
          :count 7
          :assertions 20}}

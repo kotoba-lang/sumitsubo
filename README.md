@@ -10,7 +10,7 @@ library. This repository owns the actor-specific ModelOp planning, Datom emissio
 cell definitions, lexicons, schema, and seed data.
 
 ```bash
-bb run_tests.clj
+bb run_tests.cljk
 ```
 
 Deployment is operator-gated and described canonically by

@@ -12,4 +12,4 @@ and `repository-contracts.edn`. Do not make Markdown authoritative.
 - Update the SDK repository first when changing the shared ModelOp vocabulary,
   then pin its resulting commit in both canonical EDN files here.
 
-Run the actor suite with `bb run_tests.clj`.
+Run the actor suite with `bb run_tests.cljk`.

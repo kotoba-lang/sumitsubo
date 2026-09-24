@@ -3,7 +3,7 @@
   clojure.test). Exercises the full op pipeline via the offline heuristic planner + None host
   bindings: validate-ops, handle-model (generative), handle-draft, handle-interop (VW/AutoCAD),
   handle-export (DWG-proprietary honesty)."
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [sumitsubo.methods.agent :as agent]))
 
 (deftest test-validate-ops
